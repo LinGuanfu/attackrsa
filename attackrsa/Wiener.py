@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from fractions import Fraction
-import gmpy
+import gmpy2 as gmpy
 import RSABase
 
 def f2cf(nu, de):

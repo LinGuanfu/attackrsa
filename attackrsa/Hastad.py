@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import gmpy
+import gmpy2 as gmpy
 import Utils
 
 class Hastad(object):
@@ -16,13 +16,16 @@ class Hastad(object):
         self.ns = ns
         self.e = e
         self.cs = cs
-    def decrypt(self):
+    def decrypt(self,precision):
         s = Utils.CRT(self.ns, self.cs)
-        pt, perfect = gmpy.root(s, self.e)
-        if perfect:
-            return pt
+        #gmpy.get_context().precision = precision
+        if s == 'no inverse':
+            print self.ns
         else:
-            print "Cannot find %dth root of %s" % (self.e, hex(s))
-
-
-        
+            pt,perfect = gmpy.iroot(s, self.e)
+            if perfect:
+                print 'hello,it works:'
+                return pt
+            else:
+                pass
+                #print "Cannot find %dth root of %s" % (self.e, s),pt 

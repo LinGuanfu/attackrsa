@@ -40,7 +40,11 @@ def CRT(ds, rs):
         prod *= ds[i]
     for i in range(length):
         p = prod // ds[i]
-        s += rs[i] * modInv(p, ds[i]) * p
+        try:
+            s += rs[i] * modInv(p, ds[i]) * p
+        except:
+            return 'no inverse'
+
     return s % prod
 
 

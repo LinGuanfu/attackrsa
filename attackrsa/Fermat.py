@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import gmpy
+import gmpy2 as gmpy
 import RSABase
 
 class Fermat(RSABase.RSABase):
